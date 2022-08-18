@@ -2,7 +2,8 @@
 This is client teeworlds. 
 # Command:
 - addwar
--warlist
+- warlist
+- remove war
 
 # build
 ```
