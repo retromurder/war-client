@@ -9,7 +9,8 @@
 
 //warlist
 MACRO_CONFIG_UTF8STR(WarList, warlist, 512, MAX_NAME_LENGTH, "not found :(", CFGFLAG_SAVE|CFGFLAG_CLIENT, "warlist of player")
-MACRO_CONFIG_UTF8STR(AddWar, addwar, 512, MAX_NAME_LENGTH, "player not added :(", CFGFLAG_SAVE|CFGFLAG_CLIENT, "warlist of player")
+MACRO_CONFIG_UTF8STR(AddWar, addwar, 512, MAX_NAME_LENGTH, "player not added :(", CFGFLAG_SAVE|CFGFLAG_CLIENT, "add playerr in warlist")
+MACRO_CONFIG_UTF8STR(RemoveWar, removewar, 512, MAX_NAME_LENGTH, "player removed war", CFGFLAG_SAVE|CFGFLAG_CLIENT, "remove player in warlist")
 
 //game
 MACRO_CONFIG_UTF8STR(PlayerName, player_name, MAX_NAME_ARRAY_SIZE, MAX_NAME_LENGTH, "nameless tee", CFGFLAG_SAVE|CFGFLAG_CLIENT, "Name of the player")

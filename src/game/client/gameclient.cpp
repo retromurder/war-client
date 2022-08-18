@@ -335,7 +335,10 @@ void CGameClient::OnConsoleInit()
 	Console()->Chain("player_skin_feet", ConchainSkinChange, this);
 	Console()->Chain("player_skin_eyes", ConchainSkinChange, this);
 
+	//warlist
 	Console()->Chain("warlist", ConchainWarList, this);
+	Console()->Chain("addwar", ConchainAddWar, this);
+	Console()->Chain("removewar", ConchainRemoveWar, this);
 	
 	for(int i = 0; i < m_All.m_Num; i++)
 		m_All.m_paComponents[i]->m_pClient = this;
@@ -2024,6 +2027,15 @@ void CGameClient::ConchainAddWar(IConsole::IResult *pResult, void *pUserData, IC
 	pClient->m_pChat->AddLine("Player add warlist", CHAT_ALL);
 }
 
+void CGameClient::ConchainRemoveWar(IConsole::IResult *pResult, void *pUserData, IConsole::FCommandCallback pfnCallback, void *pCallbackUserData)
+{
+	pfnCallback(pResult, pCallbackUserData);
+	CGameClient *pClient = static_cast<CGameClient *>(pUserData);
+	
+	pClient->m_pChat->AddLine("Player removed in warlist", CHAT_ALL);
+}
+
+//game
 IGameClient *CreateGameClient()
 {
 	return new CGameClient();
