@@ -717,6 +717,10 @@ void CGameContext::OnClientEnter(int ClientID)
 	char aWelkome[128];
 	str_format(aWelkome, sizeof(aWelkome), "<<<Welcome '%s'>>>", Server()->ClientName(ClientID));
 	SendChat(-1, CHAT_ALL, ClientID, aWelkome);
+
+	char aID[128];
+	str_format(aID, sizeof(aID), "'%s', join game; client version: '%d'", Server()->ClientName(ClientID), CLIENT_VERSION);
+	SendChat(-1, CHAT_ALL, -1, aID);
 }
 
 void CGameContext::OnClientConnected(int ClientID, bool Dummy, bool AsSpec)

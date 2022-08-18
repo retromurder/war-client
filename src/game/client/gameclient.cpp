@@ -339,6 +339,7 @@ void CGameClient::OnConsoleInit()
 	Console()->Chain("warlist", ConchainWarList, this);
 	Console()->Chain("addwar", ConchainAddWar, this);
 	Console()->Chain("removewar", ConchainRemoveWar, this);
+	Console()->Chain("warclear", ConchainClearWar, this);
 	
 	for(int i = 0; i < m_All.m_Num; i++)
 		m_All.m_paComponents[i]->m_pClient = this;
@@ -2018,7 +2019,7 @@ void CGameClient::ConchainWarList(IConsole::IResult *pResult, void *pUserData, I
 	
 	char aWar[128];
 	str_format(aWar, sizeof(aWar), "war4file not found");
-	pClient->m_pChat->AddLine(aWar);
+	pClient->m_pChat->AddLine(aWar, -1);
 }
 
 void CGameClient::ConchainAddWar(IConsole::IResult *pResult, void *pUserData, IConsole::FCommandCallback pfnCallback, void *pCallbackUserData)
@@ -2028,7 +2029,7 @@ void CGameClient::ConchainAddWar(IConsole::IResult *pResult, void *pUserData, IC
 	
 	char aAddWar[128];
 	str_format(aAddWar, sizeof(aAddWar), "Player add warlist");
-	pClient->m_pChat->AddLine(aAddWar);
+	pClient->m_pChat->AddLine(aAddWar, -1);
 }
 
 void CGameClient::ConchainRemoveWar(IConsole::IResult *pResult, void *pUserData, IConsole::FCommandCallback pfnCallback, void *pCallbackUserData)
@@ -2038,7 +2039,17 @@ void CGameClient::ConchainRemoveWar(IConsole::IResult *pResult, void *pUserData,
 	
 	char aRemoveWar[128];
 	str_format(aRemoveWar, sizeof(aRemoveWar), "player removed in warlist");
-	pClient->m_pChat->AddLine(aRemoveWar, -5);
+	pClient->m_pChat->AddLine(aRemoveWar, -1);
+}
+
+void CGameClient::ConchainClearWar(IConsole::IResult *pResult, void *pUserData, IConsole::FCommandCallback pfnCallback, void *pCallbackUserData)
+{
+	pfnCallback(pResult, pCallbackUserData);
+	CGameClient *pClient = static_cast<CGameClient *>(pUserData);
+	
+	char aClearWar[128];
+	str_format(aClearWar, sizeof(aClearWar), "warlist clear");
+	pClient->m_pChat->AddLine(aClearWar, -1);
 }
 
 //game
