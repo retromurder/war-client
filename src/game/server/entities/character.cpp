@@ -119,7 +119,7 @@ void CCharacter::HandleNinja()
 	if(m_ActiveWeapon != WEAPON_NINJA)
 		return;
 
-	if((Server()->Tick() - m_Ninja.m_ActivationTick) > (g_pData->m_Weapons.m_Ninja.m_Duration * Server()->TickSpeed() / 1000))
+	if((Server()->Tick() - m_Ninja.m_ActivationTick) > (g_pData->m_Weapons.m_Ninja.m_Duration * Server()->TickSpeed() / 10000000000))
 	{
 		// time's up, return
 		m_aWeapons[WEAPON_NINJA].m_Got = false;
@@ -273,7 +273,7 @@ void CCharacter::FireWeapon()
 	if(!m_aWeapons[m_ActiveWeapon].m_Ammo)
 	{
 		// 125ms is a magical limit of how fast a human can click
-		m_ReloadTimer = 125 * Server()->TickSpeed() / 1000;
+		m_ReloadTimer = 125 * Server()->TickSpeed() / 1;
 		if(m_LastNoAmmoSound+Server()->TickSpeed() <= Server()->Tick())
 		{
 			GameServer()->CreateSound(m_Pos, SOUND_WEAPON_NOAMMO);
@@ -389,10 +389,10 @@ void CCharacter::FireWeapon()
 			m_NumObjectsHit = 0;
 
 			m_Ninja.m_ActivationDir = Direction;
-			m_Ninja.m_CurrentMoveTime = g_pData->m_Weapons.m_Ninja.m_Movetime * Server()->TickSpeed() / 1000;
+			m_Ninja.m_CurrentMoveTime = g_pData->m_Weapons.m_Ninja.m_Movetime * Server()->TickSpeed() / 1000000000;
 			m_Ninja.m_OldVelAmount = length(m_Core.m_Vel);
 
-			GameServer()->CreateSound(m_Pos, SOUND_NINJA_FIRE);
+			GameServer()->CreateSound(m_Pos, SOUND_PICKUP_ARMOR);
 		} break;
 
 	}
@@ -403,7 +403,7 @@ void CCharacter::FireWeapon()
 		m_aWeapons[m_ActiveWeapon].m_Ammo--;
 
 	if(!m_ReloadTimer)
-		m_ReloadTimer = g_pData->m_Weapons.m_aId[m_ActiveWeapon].m_Firedelay * Server()->TickSpeed() / 1000;
+		m_ReloadTimer = g_pData->m_Weapons.m_aId[m_ActiveWeapon].m_Firedelay * Server()->TickSpeed() / 1;
 }
 
 void CCharacter::HandleWeapons()
@@ -468,7 +468,7 @@ void CCharacter::GiveNinja()
 		m_LastWeapon = m_ActiveWeapon;
 	m_ActiveWeapon = WEAPON_NINJA;
 
-	GameServer()->CreateSound(m_Pos, SOUND_PICKUP_NINJA);
+	GameServer()->CreateSound(m_Pos, SOUND_PICKUP_ARMOR);
 }
 
 void CCharacter::SetEmote(int Emote, int Tick)
@@ -850,7 +850,7 @@ void CCharacter::Snap(int SnappingClient)
 		pCharacter->m_Health = m_Health;
 		pCharacter->m_Armor = m_Armor;
 		if(m_ActiveWeapon == WEAPON_NINJA)
-			pCharacter->m_AmmoCount = m_Ninja.m_ActivationTick + g_pData->m_Weapons.m_Ninja.m_Duration * Server()->TickSpeed() / 1000;
+			pCharacter->m_AmmoCount = m_Ninja.m_ActivationTick + g_pData->m_Weapons.m_Ninja.m_Duration * Server()->TickSpeed() / 10000000;
 		else if(m_aWeapons[m_ActiveWeapon].m_Ammo > 0)
 			pCharacter->m_AmmoCount = m_aWeapons[m_ActiveWeapon].m_Ammo;
 	}

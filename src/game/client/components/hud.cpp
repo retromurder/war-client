@@ -726,7 +726,7 @@ void CHud::RenderHealthAndAmmo(const CNetObj_Character *pCharacter)
 	// render ammo
 	if(pCharacter->m_Weapon == WEAPON_NINJA)
 	{
-		const int Max = g_pData->m_Weapons.m_Ninja.m_Duration * Client()->GameTickSpeed() / 1000;
+		const int Max = g_pData->m_Weapons.m_Ninja.m_Duration * Client()->GameTickSpeed() / 10000000000;
 		float NinjaProgress = clamp(pCharacter->m_AmmoCount-Client()->GameTick(), 0, Max) / (float)Max;
 		RenderNinjaBar(x, y+24.f, NinjaProgress);
 	}
