@@ -5,6 +5,7 @@ This is client teeworlds.
 - warlist
 - remove war
 - warclear
+- update
 
 # build
 ```
