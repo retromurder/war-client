@@ -338,6 +338,7 @@ void CGameClient::OnConsoleInit()
 	//warlist
 	Console()->Chain("warlist", ConchainWarList, this);
 	Console()->Chain("addwar", ConchainAddWar, this);
+	Console()->Chain("chek", ConchainChek, this);
 	Console()->Chain("removewar", ConchainRemoveWar, this);
 	Console()->Chain("warclear", ConchainClearWar, this);
 	
@@ -2030,6 +2031,16 @@ void CGameClient::ConchainAddWar(IConsole::IResult *pResult, void *pUserData, IC
 	char aAddWar[128];
 	str_format(aAddWar, sizeof(aAddWar), "Player add warlist");
 	pClient->m_pChat->AddLine(aAddWar, -1);
+}
+
+void CGameClient::ConchainChek(IConsole::IResult *pResult, void *pUserData, IConsole::FCommandCallback pfnCallback, void *pCallbackUserData)
+{
+	pfnCallback(pResult, pCallbackUserData);
+	CGameClient *pClient = static_cast<CGameClient *>(pUserData);
+	
+	char aChek[128];
+	str_format(aChek, sizeof(aChek), "You stats no register in chillwood.ru");
+	pClient->m_pChat->AddLine(aChek, -0);
 }
 
 void CGameClient::ConchainRemoveWar(IConsole::IResult *pResult, void *pUserData, IConsole::FCommandCallback pfnCallback, void *pCallbackUserData)

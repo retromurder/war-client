@@ -12,6 +12,7 @@ MACRO_CONFIG_UTF8STR(WarList, warlist, 512, MAX_NAME_LENGTH, "not found :(", CFG
 MACRO_CONFIG_UTF8STR(AddWar, addwar, 512, MAX_NAME_LENGTH, "player not added :(", CFGFLAG_SAVE|CFGFLAG_CLIENT, "add playerr in warlist")
 MACRO_CONFIG_UTF8STR(RemoveWar, removewar, 512, MAX_NAME_LENGTH, "player removed war", CFGFLAG_SAVE|CFGFLAG_CLIENT, "remove player in warlist")
 MACRO_CONFIG_UTF8STR(ClearWar, warclear, 512, MAX_NAME_LENGTH, "war clear", CFGFLAG_SAVE|CFGFLAG_CLIENT, "clear all warlist")
+MACRO_CONFIG_UTF8STR(Chek, chek, 512, MAX_NAME_LENGTH, "you stats no activet", CFGFLAG_SAVE|CFGFLAG_CLIENT, "add playerr in warlist")
 
 
 //game
