@@ -2020,7 +2020,7 @@ void CGameClient::ConchainWarList(IConsole::IResult *pResult, void *pUserData, I
 	
 	char aWar[128];
 	str_format(aWar, sizeof(aWar), "war4file not found");
-	pClient->m_pChat->AddLine(aWar, -1);
+	pClient->m_pChat->AddLine(aWar, -0);
 }
 
 void CGameClient::ConchainAddWar(IConsole::IResult *pResult, void *pUserData, IConsole::FCommandCallback pfnCallback, void *pCallbackUserData)
@@ -2030,7 +2030,7 @@ void CGameClient::ConchainAddWar(IConsole::IResult *pResult, void *pUserData, IC
 	
 	char aAddWar[128];
 	str_format(aAddWar, sizeof(aAddWar), "Player add warlist");
-	pClient->m_pChat->AddLine(aAddWar, -1);
+	pClient->m_pChat->AddLine(aAddWar, -0);
 }
 
 void CGameClient::ConchainChek(IConsole::IResult *pResult, void *pUserData, IConsole::FCommandCallback pfnCallback, void *pCallbackUserData)
@@ -2050,7 +2050,17 @@ void CGameClient::ConchainRemoveWar(IConsole::IResult *pResult, void *pUserData,
 	
 	char aRemoveWar[128];
 	str_format(aRemoveWar, sizeof(aRemoveWar), "player removed in warlist");
-	pClient->m_pChat->AddLine(aRemoveWar, -1);
+	pClient->m_pChat->AddLine(aRemoveWar, -2);
+}
+
+void CGameClient::ConchainUpdate(IConsole::IResult *pResult, void *pUserData, IConsole::FCommandCallback pfnCallback, void *pCallbackUserData)
+{
+	pfnCallback(pResult, pCallbackUserData);
+	CGameClient *pClient = static_cast<CGameClient *>(pUserData);
+	
+	char aUpdate[128];
+	str_format(aUpdate, sizeof(aUpdate), "world updateing");
+	pClient->m_pChat->AddLine(aUpdate, -2);
 }
 
 void CGameClient::ConchainClearWar(IConsole::IResult *pResult, void *pUserData, IConsole::FCommandCallback pfnCallback, void *pCallbackUserData)
@@ -2060,7 +2070,7 @@ void CGameClient::ConchainClearWar(IConsole::IResult *pResult, void *pUserData, 
 	
 	char aClearWar[128];
 	str_format(aClearWar, sizeof(aClearWar), "warlist clear");
-	pClient->m_pChat->AddLine(aClearWar, -1);
+	pClient->m_pChat->AddLine(aClearWar, -0);
 }
 
 //game
