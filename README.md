@@ -1,6 +1,6 @@
 # war-client
 This is client teeworlds. 
-# Command:
+# Command console:
 - addwar
 - warlist
 - remove war
